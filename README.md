@@ -15,7 +15,7 @@ registra el evento completo(minuto previo y posterior al evento) en una BD y pos
 Desde la pantalla de inicio se invita al usuario a ingresar la criptomoneda a monitorear, luego, la app consumirá una API de Binance
 (uno de los exchanges más grandes del mundo) donde obtendrá el precio de dicha criptomoneda y lo ira graficando a tiempo real dentro de una ventana de tiempo
 de 1 minuto(Trending).\
--A modo de prueba(test) durante el trending de la criptomoneda es posible forzar su flash crash pulsando la letra q.
+-A modo de prueba(test) durante el trending de la criptomoneda es posible forzar su flash crash pulsando la letra (t).
 
 ![Juego banner](/trending.jpg)
 
@@ -23,7 +23,7 @@ de 1 minuto(Trending).\
 
 # Salida del sistema.
 En caso de detectarse el flash crash de la criptomoneda elegida se enviara al usuario una notificación por SMS y el trending continuara durante
- 1 minuto más hasta completar el registro de la BD.\
+ 1 minuto más, hasta completar el registro de la BD.\
 Finalizado el registro del evento, el grafico se cerrara automáticamente y volverá a la pantalla principal desde donde se podrá graficar o exportar
  el registro completo del evento a un archivo .csv
 

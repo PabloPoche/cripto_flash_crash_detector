@@ -7,9 +7,10 @@ Nivel: Programador.
 # Crypto Flash Crash Detector.
 Un Flash Crash es un evento muy poco frecuente que se da en los mercados financieros en el que un activo, en este caso una criptomoneda, cae rápidamente de valor
 (caída de más del 1% en menos de 1 minuto).\
-La aplicación monitorea el precio de una determinada criptomoneda y en caso de detectarse un flash crash de la misma notifica al usuario vía SMS(*),
-registra el evento completo(minuto previo y posterior al evento) en una BD y posibilita luego exportarlo a una archivo .csv para un posterior análisis(Data Analytic). 
+La aplicación permite monitorear el precio de una determinada criptomoneda y en caso de detectar un flash crash de la misma notifica al usuario vía SMS,
+registra el evento completo(minuto previo y posterior al evento) en una BD y posibilita exportarlo a una archivo .csv para un posterior análisis(Data Analytic). 
 
+![Juego banner](/index.jpg)
 
 # Entrada del sistema.
 Desde la pantalla de inicio se invita al usuario a ingresar la criptomoneda a monitorear, luego, la app consumirá una API de Binance
@@ -20,14 +21,13 @@ de 1 minuto(Trending).\
 ![Juego banner](/trending.jpg)
 
 
-
 # Salida del sistema.
-En caso de detectarse el flash crash de la criptomoneda elegida se enviara al usuario una notificación por SMS y el trending continuara durante
+En caso de detectarse el flash crash de la criptomoneda elegida se enviara al usuario una notificación por SMS(*) y el trending continuara durante
  1 minuto más, hasta completar el registro de la BD.\
-Finalizado el registro del evento, el grafico se cerrara automáticamente y volverá a la pantalla principal desde donde se podrá graficar o exportar
+Finalizado el registro del evento, el grafico se cerrara automáticamente y volverá a la pantalla principal desde donde se podrá graficar/imprimir o exportar
  el registro completo del evento a un archivo .csv
 
-![Juego banner](/index.jpg)
+![Juego banner](/sms.jpg)
 
 
 

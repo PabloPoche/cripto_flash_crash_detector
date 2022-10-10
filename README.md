@@ -32,7 +32,7 @@ Finalizado el registro del evento, el grafico se cerrara automáticamente y volv
 
 
 # Nota.
-En este proyecto está orientado a integrar en un programa los conocimientos adquiridos durante el cursado de los 8 módulos de programador python.\
+En este proyecto está orientado a integrar los conocimientos adquiridos durante el cursado de los 8 módulos de programador python.\
 (*) Al tratarse de una version trial(gratuita) solo podran notificarse usuarios registrados en www.twilio.com
 
 # Contacto.

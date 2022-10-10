@@ -7,7 +7,7 @@ Nivel: Programador.
 # Crypto Flash Crash Detector.
 Un Flash Crash es un evento muy poco frecuente que se da en los mercados financieros en el que un activo, en este caso una criptomoneda, cae rápidamente de valor
 (caída de más del 1% en menos de 1 minuto).\
-La aplicación monitorea el precio de una determinada criptomoneda y en caso de detectarse un flash crash de la misma notifica al usuario vía SMS,
+La aplicación monitorea el precio de una determinada criptomoneda y en caso de detectarse un flash crash de la misma notifica al usuario vía SMS(*),
 registra el evento completo(minuto previo y posterior al evento) en una BD y posibilita luego exportarlo a una archivo .csv para un posterior análisis(Data Analytic). 
 
 
@@ -33,6 +33,7 @@ Finalizado el registro del evento, el grafico se cerrara automáticamente y volv
 
 # Nota.
 En este proyecto está orientado a integrar en un programa los conocimientos adquiridos durante el cursado de los 8 módulos de programador python.
+(*) Al tratarse de una version trial(gratuita) solo podran notificarse usuarios registrados en www.twilio.com
 
 # Contacto.
 Discord ID: PabloP#2073

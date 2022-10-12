@@ -55,7 +55,7 @@ def get_x_y_sp(cripto):
             tiempo=list(x) 
             precio=list(y)              # registro 1 min previo al evento
             s_p= list(sp)     
-            send_sms.send(cripto)       # enviar SMS al usuario
+            #send_sms.send(cripto)       # enviar SMS al usuario(solo usuarios registrados, VER send_sms.py)
             fc= True                    # Set flag (flash crash detectado)
          
     if len(x) > 55:                     # control de rotacion en x (ventana 1 min. aprox)

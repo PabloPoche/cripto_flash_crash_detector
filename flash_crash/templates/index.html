@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<body>
+    <h1 style="text-align:center"><u>Cripto Flash Crash Detector</u></h1>
+    
+    <br>
+    
+
+    <form method = "POST" action="{{url_for('index')}}">
+        <h3> <label>- Ingrese la criptomoneda a monitorear: </label>
+             <input type="name" name="name" size="2">{{namei}}</h3>
+    </form> 
+    
+    <p> <b>BTC</b>(bitcoin), <b>ETH</b>(ethereum), <b>ADA</b>(cardano), <b>SOL</b>(solana).<br> 
+        Ver <a href="https://www.binance.com/en/markets"><b> Binance</b> </a> para mas criptomonedas.
+    </p>
+    
+    
+    <br>
+
+    <form action="{{url_for('graficar')}}">
+        <h3> <label>- Graficar/Imprimir ultimo flash crash. </label> 
+             <input type="submit" value="Graficar"/> </h3>
+    </form>
+    
+    <br>
+    
+    
+    <form action="{{url_for('exportar')}}">
+        <h3> <label>- Exportar trending a un archivo. </label> 
+             <input type="submit" value="Exportar"/> </h3>
+    </form> 
+    <p>{{name}}</p>
+      
+        
+    
+</body>
+</html>

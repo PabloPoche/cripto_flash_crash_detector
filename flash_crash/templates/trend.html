@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <h1 style="text-align:center">{{namet}} Flash Crash Detector</h1>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">   
+</head>
+
+<body>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+
+<script>
+
+const config = {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Cripto",
+                backgroundColor: "Blue",
+                borderColor: "Blue",
+                data: [],
+                fill: false,
+                tension: 0,
+                pointRadius: 0,
+                        }],
+                },
+        options:{
+                tooltips:{
+                        enabled: false,
+                         }, 
+                legend: {
+                        display: false,
+                        labels: {
+                        fontColor: 'rgb(255, 99, 132)'
+                            }
+                            },
+                annotation:{
+                drawTime: "afterDraw",
+                annotations:[{
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis",
+                            value: [],
+                            borderWidth: 3,
+                            borderDash: [10,5],
+                            borderColor: "red",
+                            label: {
+                                    backgroundColor: "red",
+                                    content: "Flash Crash level (-1%)" ,
+                                    enabled: true,
+                                    position: "center"
+                                    }
+                            }]
+                    },
+            responsive: true,
+            title: {
+                display: true,
+                fontColor: "red",
+                text: " "
+                    },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Tiempo"
+                                },
+                    ticks: {
+                        autoSkip: true,
+                        maxRotation: 90,
+                        minRotation: 90,
+                        // maxTicksLimit: 5
+                       },
+                        }],
+                yAxes: [{
+                    id: 'y-axis',
+                    type: 'linear',
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: " "
+                                }
+                        }]
+            }
+        }
+    };
+     
+        
+const myChart = new Chart('myChart', config);
+
+const source = new EventSource("/sse");
+
+source.onmessage = function (event) {
+    const data = JSON.parse(event.data);
+    if (myChart.data.labels.length === 60) {
+        myChart.data.labels.shift();
+        myChart.data.datasets[0].data.shift();
+                                            }
+        
+    myChart.data.labels.push(data.time); 
+    myChart.data.datasets[0].data.push(data.price);
+    
+    myChart.options.annotation.annotations[0].value = (data.sp);
+
+    const txt1 = myChart.options.title.text= (data.sms);
+    const txt2 = myChart.options.scales.yAxes[0].scaleLabel.labelString= "Precio USD/"+(data.cripto);
+    
+    if ((data.sms) === "fin"){
+        window.location.href = window.location.href;
+                             }
+    
+
+    myChart.update();
+                                    }
+
+</script>
+</body>
+</html>

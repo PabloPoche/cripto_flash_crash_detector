@@ -26,7 +26,7 @@ En caso de detectarse el flash crash de la criptomoneda ingresada se enviara al 
 
 ![Juego banner](/sms.jpg)
 
-El trending continuara durante un 1 minuto más y el grafico se cerrara automáticamente al completarse el registro de la BD.
+El trending continuara durante un 1 minuto más y el grafico se cerrara automáticamente al completarse el registro en la BD.
 
 
 # Nota.

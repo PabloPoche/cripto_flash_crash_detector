@@ -8,6 +8,7 @@ Contiene las funciones encargadas de crear y administrar la DB(flash_crash.db)
 - db_to_lists:    Cargar las listas con la DB
 
 '''
+from datetime import datetime
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -20,8 +21,8 @@ class Tabla(db.Model):
     __tablename__ = "flash_crash_sql"
     id = db.Column(db.Integer, primary_key=True)
     cripto= db.Column(db.String)
-    precio = db.Column(db.Integer)
     tiempo = db.Column(db.DateTime)
+    precio = db.Column(db.Integer)
     s_p = db.Column(db.Integer)
     
     def __repr__(self):
@@ -29,31 +30,30 @@ class Tabla(db.Model):
 
 
     # Crear nueva fila
-def insert(cripto, precio, tiempo, s_p):
-    row = Tabla(cripto= cripto, precio= precio, tiempo= tiempo, s_p= s_p)
+def insert(cripto, tiempo, precio, s_p):
+    row = Tabla(cripto= cripto, tiempo= tiempo, precio= precio, s_p= s_p)
     db.session.add(row)             # Agregar nueva fila a la DB
     db.session.commit()
 
 
-    # Cargar las listas(cripto, precio, tiempo, s_p) en la BD
-def lists_to_db(cripto, precio, tiempo, s_p):
+    # Cargar las listas(cripto, tiempo, precio, s_p) en la BD
+def lists_to_db(cripto, tiempo, precio, s_p):
     for row in range(len(precio)):
-        insert(cripto, precio[row], tiempo[row], s_p[row])
+        insert(cripto, tiempo[row], precio[row], s_p[row])
     return()
 
 
-    # Cargar las listas(cripto, precio, tiempo, s_p) desde la BD
+    # Cargar las listas(cripto, tiempo, precio, s_p) desde la BD
 def db_to_lists():
     cripto= []
-    precio= []
     tiempo= []
+    precio= []
     s_p= []
     query = db.session.query(Tabla) # Traer todos los elementos de la BD
     for row in query:
         cripto.append(row.cripto)
-        precio.append(row.precio)
         tiempo.append(row.tiempo)
+        precio.append(row.precio)
         s_p.append(row.s_p)
-    return(cripto, precio, tiempo, s_p)
-
+    return(cripto, tiempo, precio, s_p)
 

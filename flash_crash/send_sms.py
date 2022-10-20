@@ -7,7 +7,7 @@ Contiene la funcion encargada de enviar al usuario un SMS en caso de producirse 
 Luego de registrado el usuario en www.twilio.com se le asigna un:
 Account SID, Auth Token y un numero en twilio desde donde enviar SMS.
 (*)Para la version gratuita, se dispone de un saldo de 20usd y solo puede enviarse SMS 
-a usuarios registrados y con numeros verificados(+5493364672xxx) en la plataforma.
+a usuarios registrados y con numeros verificados(ej: +5493364672xxx) en la plataforma.
 
 '''
 

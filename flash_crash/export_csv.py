@@ -14,7 +14,7 @@ import csv
     # Crear un nuevo archivo flash_crash.csv
 def crear_csv():
     file= "flash_crash.csv"                         # Nombre del archivo
-    header= ["cripto", "precio", "tiempo", "s_p"]   # Nombre de las columnas
+    header= ["cripto", "tiempo", "precio", "s_p"]   # Nombre de las columnas
     csvfile= open(file, "w", newline="")            # w= sobre escribir(nuevo archivo)
     writer= csv.DictWriter(csvfile, fieldnames= header)
     writer.writeheader() 
@@ -25,7 +25,7 @@ def crear_csv():
     # Insertar una nueva fila en el archivo flash_crash.csv
 def write_csv(row):
     file= "flash_crash.csv"                         # Nombre del archivo
-    header= ["cripto", "precio", "tiempo", "s_p"]   # Nombre de las columnas
+    header= ["cripto", "tiempo", "precio", "s_p"]   # Nombre de las columnas
     csvfile= open(file, "a", newline="")
     writer= csv.DictWriter(csvfile, fieldnames= header)
     writer.writerow(row)
@@ -33,11 +33,11 @@ def write_csv(row):
     return()
 
 
-    # Cargar las listas (cripto, precio, tiempo, s_p) en las columnas del archivo flash_crash.csv
-def lists_to_csv(cripto, precio, tiempo, s_p):
+    # Cargar las listas (cripto, tiempo, precio, s_p) en las columnas del archivo flash_crash.csv
+def lists_to_csv(cripto, tiempo, precio, s_p):
     crear_csv()                                     # nuevo archivo .csv (sobre escribe el anterior)
     for x in range(len(cripto)):
-        row = {"cripto": cripto[x], "precio": precio[x], "tiempo": tiempo[x], "s_p": s_p[x]}    # fila a escribir
+        row = {"cripto": cripto[x], "tiempo": tiempo[x], "precio": precio[x], "s_p": s_p[x]}    # fila a escribir
         write_csv(row)
     return()
 

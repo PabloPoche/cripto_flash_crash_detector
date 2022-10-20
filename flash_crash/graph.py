@@ -1,9 +1,9 @@
 '''
 graph.py 
-Contiene las funciones encargadas de graficar el registro completo(DB) en HTML
+Contiene las funciones encargadas de graficar(Matplotlib) el registro completo(DB) y presentarlo en HTML
 
 - graf_frame:   Define el marco de grafico
-- plot_xy:      Grafica el registro completo de la BD y lo enviar al front-end en HTML.
+- plot_xy:      Grafica el registro completo de la BD y lo enviar al front-end en formato HTML.
 
 '''
 
@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg as FigureCanvas
 
 
-def graf_frame(x, y, sp, cripto, text):
+def graf_frame(cripto, tiempo, precio, s_p, text):
     plt.cla()
     plt.title(text, color = "red") 
     # titulo del grafico y etiquetas de los ejes
@@ -28,23 +28,21 @@ def graf_frame(x, y, sp, cripto, text):
     plt.ticklabel_format(useOffset=False, style="plain")
     # rotacion de fechas eje x
     plt.xticks(rotation=90)
-    plt.plot(x, y)
+    plt.plot(tiempo, precio)
     # dibujar linea horizontal
-    plt.axhline(max(sp), color= "red", linewidth= 1, linestyle= "dashed")
-    plt.text(x[0] ,max(sp), "Set point(-1%)", color = "red", fontsize=10, va='center', ha='center', backgroundcolor='w')
+    plt.axhline(max(s_p), color= "red", linewidth= 1, linestyle= "dashed")
+    plt.text(tiempo[0] ,max(s_p), "Set point(-1%)", color = "red", fontsize=10, va='center', ha='center', backgroundcolor='w')
     plt.tight_layout()
     return
 
 
-def plot_xy(cripto, y, x, sp):
+def plot_xy(cripto, tiempo, precio, s_p):
     plt.style.use("seaborn")            # Estilo del grafico
     fig= plt.figure(figsize=(16,9))     # Tamaño del grafico
     text= "Presione:  (Ctrl p) para imprimir grafico  o  (Alt ←) para volver al menu principal."
-    graf_frame(x, y, sp, cripto, text) # Define marco de la ventana grafica
+    graf_frame(cripto, tiempo, precio, s_p, text) # Define marco de la ventana grafica
     image_html = io.BytesIO()           # Convertir ese grafico en una imagen para enviar por HTTP y mostrar en el HTML
     FigureCanvas(fig).print_png(image_html)
     plt.close(fig)                      # Cerrar la imagen para que no consuma memoria del sistema
     return image_html
-
-
 
